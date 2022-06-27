@@ -1,0 +1,22 @@
+Package: fangs
+Title: Feature Allocation Neighborhood Search Algorithm
+Version: 0.1.6
+Authors@R: c(person(given="David B.",family="Dahl",role=c("aut","cre"),email="dahl@stat.byu.edu",comment=c(ORCID="0000-0002-8173-1547")),
+    person(given="Jacob", family="Andros", role=c("aut"),email="androsrj@gmail.com", comment=c(ORCID="0000-0002-1289-385X")),
+    person(given="Devin J.",family="Johnson",role=c("aut"),email="devin.j.johnson7@gmail.com",comment=c(ORCID="0000-0003-2619-6649")))
+Description: A neighborhood-based, greedy search algorithm is performed to estimate a feature allocation by minimizing the expected loss based on posterior samples from the feature allocation distribution.
+License: MIT + file LICENSE | Apache License 2.0
+Depends: R (>= 4.2.0)
+Imports: cargo (>= 0.2.5)
+SystemRequirements: Cargo (>= 1.61) for installation from sources: see
+        INSTALL file
+Encoding: UTF-8
+RoxygenNote: 7.2.0
+NeedsCompilation: yes
+Packaged: 2022-06-25 21:36:10 UTC; dahl
+Author: David B. Dahl [aut, cre] (<https://orcid.org/0000-0002-8173-1547>),
+  Jacob Andros [aut] (<https://orcid.org/0000-0002-1289-385X>),
+  Devin J. Johnson [aut] (<https://orcid.org/0000-0003-2619-6649>)
+Maintainer: David B. Dahl <dahl@stat.byu.edu>
+Repository: CRAN
+Date/Publication: 2022-06-27 15:10:02 UTC

@@ -1,0 +1,11 @@
+0.1.6 (2022-06-25)
+  * Modified configure script based on CRAN feedback.
+  * Implemented CRAN suggestion regarding getwd(), setwd(), and on.exit().
+  * Followed CRAN suggestion regarding the use of cat().
+
+0.1.1 (2022-06-22)
+  * Fixed typographical error in DESCRIPTION file.
+
+0.1.0 (2022-06-22)
+  * Initial submission to CRAN.
+
