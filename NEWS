@@ -1,3 +1,8 @@
+0.2.2 (2022-12-03)
+  * Noted authorship of vendored Rust crates in DESCRIPTION, inst/AUTHORS, and
+    LICENSE.note.
+  * Modified configure script based on CRAN feedback.
+
 0.1.6 (2022-06-25)
   * Modified configure script based on CRAN feedback.
   * Implemented CRAN suggestion regarding getwd(), setwd(), and on.exit().
