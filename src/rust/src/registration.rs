@@ -40,7 +40,12 @@ fn fangs_old(samples: Rval, nIterations: Rval, nInit: Rval, nSweet: Rval, a: Rva
 }
 
 #[roxido]
-fn fangs(samples: Rval, nIterations: Rval, maxSeconds: Rval, nInit: Rval, nSweet: Rval, a: Rval, nCores: Rval, quiet: Rval) -> Rval {
+fn fangs_double_greedy(samples: Rval, maxSeconds: Rval, a: Rval, nCores: Rval) -> Rval {
+    Rval::nil()
+}
+
+#[roxido]
+fn fangs(samples: Rval, nIterations: Rval, maxSeconds: Rval, nInit: Rval, nSweet: Rval, a: Rval, nCores: Rval, TRUE: Rval, quiet: Rval) -> Rval {
     Rval::nil()
 }
 */
@@ -49,8 +54,8 @@ use roxido::*;
 
 #[no_mangle]
 extern "C" fn R_init_fangs_rust(info: *mut rbindings::DllInfo) {
-    let mut call_routines = Vec::with_capacity(6);
-    let mut _names: Vec<std::ffi::CString> = Vec::with_capacity(6);
+    let mut call_routines = Vec::with_capacity(7);
+    let mut _names: Vec<std::ffi::CString> = Vec::with_capacity(7);
     _names.push(std::ffi::CString::new(".compute_expected_loss").unwrap());
     call_routines.push(rbindings::R_CallMethodDef {
         name: _names.last().unwrap().as_ptr(),
@@ -81,11 +86,17 @@ extern "C" fn R_init_fangs_rust(info: *mut rbindings::DllInfo) {
         fun: unsafe { std::mem::transmute(crate::fangs_old as *const u8) },
         numArgs: 7,
     });
+    _names.push(std::ffi::CString::new(".fangs_double_greedy").unwrap());
+    call_routines.push(rbindings::R_CallMethodDef {
+        name: _names.last().unwrap().as_ptr(),
+        fun: unsafe { std::mem::transmute(crate::fangs_double_greedy as *const u8) },
+        numArgs: 4,
+    });
     _names.push(std::ffi::CString::new(".fangs").unwrap());
     call_routines.push(rbindings::R_CallMethodDef {
         name: _names.last().unwrap().as_ptr(),
         fun: unsafe { std::mem::transmute(crate::fangs as *const u8) },
-        numArgs: 8,
+        numArgs: 9,
     });
     call_routines.push(rbindings::R_CallMethodDef {
         name: std::ptr::null(),
