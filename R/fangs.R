@@ -16,7 +16,7 @@
 #' @param nSweet The number of feature allocations among \code{nInit} which are
 #'   chosen (by lowest expected loss) to be optimized in the sweetening phase.
 #' @param nIterations The number of iterations (i.e., proposed changes) to
-#'   consider per initial estimate in the sweetening phase, although the actual
+#'   consider per initial estimate in the stochastic sweetening phase, although the actual
 #'   number may be less due to the \code{maxSeconds} argument.  The default
 #'   value is \code{0}, which sets the number of iterations to the number of
 #'   items times the number of columns.
@@ -29,12 +29,13 @@
 #'   simultaneous calculations at any given time. A value of zero indicates to
 #'   use all cores on the system.
 #' @param algorithm A string indicating the algorithm to use; equal to
-#'   \dQuote{default}, \dQuote{draws}, \dQuote{neighbors}, or
-#'   \dQuote{double-greedy}.  The \dQuote{default} algorithm is recommended,
-#'   although the \dQuote{neighbors} algorithm may provide an improvement at the
-#'   cost of time.  The \dQuote{double-greedy} algorithm is often prohibitively
-#'   slow.
+#'   \dQuote{stochastic}, \dQuote{deterministic}, or \dQuote{draws}.  The
+#'   \dQuote{stochastic} algorithm is recommended, although the
+#'   \dQuote{deterministic} algorithm may provide an improvement at the cost of
+#'   time.
 #' @param quiet If \code{TRUE}, intermediate status reporting is suppressed.
+#'   Otherwise details are provided, especially when
+#'   \code{algorithm="stochastic"}.
 #'
 #' @return A list with the following elements:
 #' \itemize{
@@ -57,19 +58,19 @@
 #' data(samplesFA)
 #' fangs(samplesFA, nIterations=100, nCores=2)
 #'
-fangs <- function(samples, nInit=16, nSweet=4, nIterations=0, maxSeconds=60, a=1.0, nCores=0, algorithm="default", quiet=FALSE) {
+fangs <- function(samples, nInit=16, nSweet=4, nIterations=0, maxSeconds=60, a=1.0, nCores=0, algorithm="stochastic", quiet=FALSE) {
   if ( a <= 0.0 || a >= 2.0 ) stop("'a' must be in (0,2).")
-  if ( ! ( algorithm %in% c("default", "draws", "neighbors", "double-greedy") ) ) {
+  if ( ! ( algorithm %in% c("stochastic", "deterministic", "draws", "double-greedy") ) ) {
     stop("Unrecognized algorithm.")
   }
   samples <- lapply(samples, function(x) {storage.mode(x) <- "double"; x})
   result <- if ( algorithm == "draws" ) {
-    .Call(.fangs_old, samples, nIterations, nInit, nSweet, a, nCores, quiet)
+    .Call(.draws, samples, a, nCores, quiet)
   } else if ( algorithm == "double-greedy" ) {
     .Call(.fangs_double_greedy, samples, maxSeconds, a, nCores)
-  } else if ( algorithm == "neighbors" ) {
+  } else if ( algorithm == "deterministic" ) {
     .Call(.fangs, samples, nIterations, maxSeconds, nInit, nSweet, a, nCores, TRUE, quiet)
-  } else if ( algorithm == "default" ) {
+  } else if ( algorithm == "stochastic" ) {
     .Call(.fangs, samples, nIterations, maxSeconds, nInit, nSweet, a, nCores, FALSE, quiet)
   } else stop("Unrecognized algorithm.")
   c(result, nInit=nInit, nSweet=nSweet, a=a)
