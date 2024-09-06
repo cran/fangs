@@ -22,7 +22,7 @@ fn main() {
         }
     };
     let out_dir = env::var_os("OUT_DIR").expect(
-        "Environment variable 'OUT_DIR' is not set.  Are you run as part of 'cargo build'?",
+        "Environment variable 'OUT_DIR' is not set.  Are you running as part of 'cargo build'?",
     );
     let dest_path = Path::new(&out_dir).join("registration.rs");
     let snippet = snippet.unwrap_or_else(|| {
@@ -61,14 +61,14 @@ fn make_registration_code(src_path: &Path) -> Option<String> {
                 }
                 buffer.push_str(
                     r#"
-#' @docType package
+#' @keywords internal
 #' @usage NULL
 #' @useDynLib "#,
                 );
                 buffer.push_str(&package_name);
                 buffer.push_str(
                     r#", .registration = TRUE
-NULL
+"_PACKAGE"
 
 .Kall <- function(...) {
   x <- .Call(...)
@@ -128,7 +128,7 @@ extern "C" fn R_init_{}_rust(info: *mut rbindings::DllInfo) {{
         rbindings::R_useDynamicSymbols(info, 0);
         rbindings::R_forceSymbols(info, 1);
     }
-    roxido::r::set_custom_panic_hook();
+    roxido::__private_set_custom_panic_hook();
 }"#,
                 );
                 Some(snippet)
