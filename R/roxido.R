@@ -8,10 +8,10 @@
 # .Call(.fangs, samples, n_iterations, max_seconds, n_baselines, n_sweet, a, n_cores, use_neighbors, quiet)
 # .Call(.fangs_double_greedy, samples, max_seconds, a, n_cores)
 
-#' @docType package
+#' @keywords internal
 #' @usage NULL
 #' @useDynLib fangs, .registration = TRUE
-NULL
+"_PACKAGE"
 
 .Kall <- function(...) {
   x <- .Call(...)

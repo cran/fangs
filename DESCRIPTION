@@ -1,6 +1,6 @@
 Package: fangs
 Title: Feature Allocation Neighborhood Greedy Search Algorithm
-Version: 0.2.17
+Version: 0.2.18
 Authors@R: c(person(given = "David B.", family = "Dahl", role = c("aut", "cre"), email = "dahl@stat.byu.edu", comment = c(ORCID = "0000-0002-8173-1547")),
     person(given = "R. Jacob", family = "Andros", role = c("aut"), email = "androsrj@gmail.com", comment = c(ORCID = "0000-0002-1289-385X")),
     person(given = "Devin J.", family = "Johnson", role = c("aut"), email = "devin.j.johnson7@gmail.com", comment = c(ORCID = "0000-0003-2619-6649")),
@@ -22,15 +22,15 @@ Authors@R: c(person(given = "David B.", family = "Dahl", role = c("aut", "cre"),
     person())
 Description: A neighborhood-based, greedy search algorithm is performed to estimate a feature allocation by minimizing the expected loss based on posterior samples from the feature allocation distribution. The method is currently under peer review but an earlier draft is available in Dahl, Johnson, and Andros (2022+) <doi:10.48550/arXiv.2207.13824>.
 License: MIT + file LICENSE | Apache License 2.0
-URL: https://github.com/dbdahl/fangs
-BugReports: https://github.com/dbdahl/fangs/issues
+URL: https://github.com/dbdahl/fangs-package
+BugReports: https://github.com/dbdahl/fangs-package/issues
 Depends: R (>= 4.2.0)
-SystemRequirements: Cargo (Rust's package manager), rustc (>= 1.66.1)
+SystemRequirements: Cargo (Rust's package manager), rustc (>= 1.67.1)
 Encoding: UTF-8
 LazyData: TRUE
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 NeedsCompilation: yes
-Packaged: 2024-09-06 15:41:21 UTC; dahl
+Packaged: 2025-03-30 02:52:32 UTC; dahl
 Author: David B. Dahl [aut, cre] (<https://orcid.org/0000-0002-8173-1547>),
   R. Jacob Andros [aut] (<https://orcid.org/0000-0002-1289-385X>),
   Devin J. Johnson [aut] (<https://orcid.org/0000-0003-2619-6649>),
@@ -56,4 +56,4 @@ Author: David B. Dahl [aut, cre] (<https://orcid.org/0000-0002-8173-1547>),
     rawpointer)
 Maintainer: David B. Dahl <dahl@stat.byu.edu>
 Repository: CRAN
-Date/Publication: 2024-09-06 16:00:08 UTC
+Date/Publication: 2025-03-30 03:20:03 UTC
