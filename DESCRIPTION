@@ -1,6 +1,6 @@
 Package: fangs
 Title: Feature Allocation Neighborhood Greedy Search Algorithm
-Version: 0.2.22
+Version: 0.2.25
 Authors@R: c(person(given = "David B.", family = "Dahl", role = c("aut", "cre"), email = "dahl@stat.byu.edu", comment = c(ORCID = "0000-0002-8173-1547")),
     person(given = "R. Jacob", family = "Andros", role = c("aut"), email = "androsrj@gmail.com", comment = c(ORCID = "0000-0002-1289-385X")),
     person(given = "Devin J.", family = "Johnson", role = c("aut"), email = "devin.j.johnson7@gmail.com", comment = c(ORCID = "0000-0003-2619-6649")),
@@ -10,14 +10,14 @@ License: MIT + file LICENSE | Apache License 2.0
 URL: https://github.com/dbdahl/fangs-package
 BugReports: https://github.com/dbdahl/fangs-package/issues
 Depends: R (>= 4.3.0)
-SystemRequirements: Cargo (Rust's package manager), rustc
+SystemRequirements: Cargo (Rust's package manager), rustc (>= 1.85.1)
 Encoding: UTF-8
 LazyData: TRUE
 RoxygenNote: 7.3.3
-Config/Roxido/TemplateVersion: 26.03.04
+Config/Roxido/TemplateVersion: 26.09.24.14.30
 Config/Roxido/MinCLIVersion: 0.8.0
 NeedsCompilation: yes
-Packaged: 2026-03-08 02:33:46 UTC; dahl
+Packaged: 2026-09-24 23:43:58 UTC; dahl
 Author: David B. Dahl [aut, cre] (ORCID:
     <https://orcid.org/0000-0002-8173-1547>),
   R. Jacob Andros [aut] (ORCID: <https://orcid.org/0000-0002-1289-385X>),
@@ -26,4 +26,4 @@ Author: David B. Dahl [aut, cre] (ORCID:
     details)
 Maintainer: David B. Dahl <dahl@stat.byu.edu>
 Repository: CRAN
-Date/Publication: 2026-03-08 03:40:08 UTC
+Date/Publication: 2026-09-25 00:00:02 UTC
